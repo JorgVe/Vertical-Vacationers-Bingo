@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="theme-color" content="#0a1825" />
+<title>Summit Nonsense Bingo · Ward</title>
+<style>
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html, body { margin:0; padding:0; background:linear-gradient(180deg,#060e14 0%,#0a1825 50%,#0d1f2e 100%); background-attachment:fixed; font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif; min-height:100vh; color:#c8dde8; }
+  .wrap { padding:20px 12px 40px; max-width:460px; margin:0 auto; }
+  .app-head { text-align:center; margin-bottom:18px; }
+  .app-sub { font-size:11px; color:#6a9ab0; letter-spacing:4px; text-transform:uppercase; margin-bottom:6px; }
+  .app-title { font-size:24px; font-weight:bold; color:#7ac8e8; letter-spacing:3px; text-transform:uppercase; text-shadow:0 0 30px #7ac8e859; }
+  .app-tag { font-size:10px; color:#4a7a90; letter-spacing:2px; margin-top:4px; }
+  .card { background:linear-gradient(160deg,#1c2b3a 0%,#0f1e2a 60%,#0a1520 100%); border:2px solid #7ac8e8; border-radius:20px; overflow:hidden; box-shadow:0 8px 40px rgba(0,0,0,.6); transition:box-shadow .5s; }
+  .card.bingo { box-shadow:0 0 40px #7ac8e8,0 8px 40px rgba(0,0,0,.7); }
+  .peak { position:relative; background:linear-gradient(180deg,#0a1a2a 0%,#1c2b3a 100%); line-height:0; }
+  .peak svg { width:100%; height:40px; display:block; }
+  .head { padding:10px 16px 8px; text-align:center; border-bottom:1px solid #7ac8e822; }
+  .head-title { display:flex; align-items:center; justify-content:center; gap:8px; margin-bottom:2px; }
+  .head-title span { font-size:19px; font-weight:bold; color:#7ac8e8; letter-spacing:3px; text-transform:uppercase; text-shadow:0 0 20px #7ac8e880; }
+  .head-sub { font-size:10px; color:#aac4d0; letter-spacing:3px; text-transform:uppercase; margin-bottom:6px; }
+  .name-badge { display:inline-block; background:#7ac8e822; border:1px solid #7ac8e859; border-radius:20px; padding:3px 20px; font-size:16px; font-weight:bold; color:#7ac8e8; letter-spacing:3px; text-transform:uppercase; }
+  .bingo-row { display:grid; grid-template-columns:repeat(5,1fr); gap:3px; padding:8px 12px 4px; }
+  .bingo-row div { text-align:center; font-weight:bold; font-size:15px; color:#7ac8e8; letter-spacing:2px; text-shadow:0 0 8px #7ac8e866; }
+  .grid { display:grid; grid-template-columns:repeat(5,1fr); gap:3px; padding:0 12px 12px; }
+  .sq { background:linear-gradient(135deg,#1e3347,#162840); border:1px solid #2a4560; border-radius:8px; min-height:58px; display:flex; align-items:center; justify-content:center; padding:5px 3px; cursor:pointer; transition:all .15s; position:relative; }
+  .sq span { font-size:8.5px; text-align:center; white-space:pre-line; line-height:1.35; color:#c8dde8; user-select:none; }
+  .sq.marked { background:linear-gradient(135deg,#7ac8e8,#7ac8e8bb); border-color:#7ac8e8; box-shadow:0 2px 10px #7ac8e844; }
+  .sq.marked span { color:#0f1e2a; font-weight:bold; }
+  .sq.free { cursor:default; }
+  .sq .free-lbl { position:absolute; bottom:3px; font-size:7px; color:#7ac8e8; letter-spacing:1px; opacity:.8; }
+  .sq.free.marked .free-lbl { color:#1c2b3a; }
+  .banner { margin:0 12px 12px; background:linear-gradient(90deg,#7ac8e8,#7ac8e8bb,#7ac8e8); color:#0f1e2a; border-radius:10px; padding:10px 0; text-align:center; font-weight:bold; font-size:19px; letter-spacing:4px; text-transform:uppercase; animation:pulse .7s infinite alternate; }
+  @keyframes pulse { from{opacity:1;transform:scale(1);} to{opacity:.85;transform:scale(1.01);} }
+  .bottom-peak { transform:scaleY(-1); opacity:.1; line-height:0; }
+  .bottom-peak svg { width:100%; height:40px; display:block; }
+  .foot { text-align:center; margin-top:14px; color:#4a7a90; font-size:10px; letter-spacing:1px; }
+  .reset { margin-top:12px; text-align:center; }
+  .reset button { background:transparent; border:1px solid #4a7a90; color:#6a9ab0; border-radius:20px; padding:6px 18px; font-size:11px; letter-spacing:1px; font-family:inherit; cursor:pointer; }
+  .reset button:active { background:rgba(106,154,176,.15); }
+  .nav { text-align:center; margin-top:16px; }
+  .nav a { color:#7ac8e8; font-size:11px; letter-spacing:1px; text-decoration:none; opacity:.7; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="app-head">
+    <div class="app-sub">The Vertical Vacationers · Austria</div>
+    <div class="app-title">⛰️ Summit Nonsense Bingo</div>
+    <div class="app-tag">4 dagen · 3 koppels · oneindige nonsens</div>
+  </div>
+  <div class="card" id="card">
+    <div class="peak">
+      <svg viewBox="0 0 200 60" preserveAspectRatio="none">
+        <polygon points="0,60 40,10 80,40 110,5 150,35 180,15 200,60" fill="#7ac8e8" opacity="0.18"/>
+        <polygon points="100,5 90,22 110,22" fill="white" opacity="0.22"/>
+        <polygon points="40,10 32,24 48,24" fill="white" opacity="0.22"/>
+        <polygon points="180,15 173,27 187,27" fill="white" opacity="0.22"/>
+      </svg>
+    </div>
+    <div class="head">
+      <div class="head-title">
+        <svg width="16" height="16" viewBox="0 0 40 40" id="edel-l"></svg>
+        <span>Summit Nonsense</span>
+        <svg width="16" height="16" viewBox="0 0 40 40" id="edel-r"></svg>
+      </div>
+      <div class="head-sub">Bingo · Austria · The Vertical Vacationers</div>
+      <div class="name-badge">Ward</div>
+    </div>
+    <div class="bingo-row"><div>B</div><div>I</div><div>N</div><div>G</div><div>O</div></div>
+    <div class="grid" id="grid"></div>
+    <div id="banner-slot"></div>
+    <div class="bottom-peak">
+      <svg viewBox="0 0 200 60" preserveAspectRatio="none"><polygon points="0,60 40,10 80,40 110,5 150,35 180,15 200,60" fill="#7ac8e8"/></svg>
+    </div>
+  </div>
+  <div class="foot">Tik een vakje aan om het te markeren · Midden is altijd vrij</div>
+  <div class="reset"><button id="resetBtn">Kaart leegmaken</button></div>
+  <div class="nav"><a href="index.html">← Alle kaarten</a></div>
+</div>
+<script>
+  var SQUARES = ["Rugzak rolt\nvan de berg","Extra lopen voor rond\ngetal op horloge","Water vullen uit\neen stroompje","Foto van\nhuisdier getoond","Charlotte: 'Ik kan\ngeen kaart lezen'","'Ik heb zin in\neen aperitiefje'","Slechte\nlunch","Om 21:00 al\nin slaapzak","Kaiserschmarrn\nbesteld","Top bereikt,\nnul uitzicht","'Is het\nnog ver?'","Bijna omvergereden\ndoor mountainbiker","FREE","Geen bereik\nén geen wifi","Warm water stopt\nhalverwege","Foto gemaakt\nvan een koe","Sara doet\neen dutje","Tandenborstel\nvergeten","'Zullen we\nshots doen?'","Freddie start\nStrava te laat","Iemand klaagt over\neen nieuwe helling","'Deze helling valt wel\nmee' (viel niet mee)","Snurker op\nde kamer","Jorg vindt\neen wandelstok","Iemand heeft iets\nnutteloos mee"];
+  var ACCENT = "#7ac8e8";
+  var STORAGE_KEY = "summit-bingo-ward";
+  var marked = SQUARES.map(function(_,i){ return i===12; });
+  try { var saved = localStorage.getItem(STORAGE_KEY); if(saved){ var arr=JSON.parse(saved); if(Array.isArray(arr)&&arr.length===25){ marked=arr; marked[12]=true; } } } catch(e){}
+  function save(){ try{ localStorage.setItem(STORAGE_KEY,JSON.stringify(marked)); }catch(e){} }
+  function edelweiss(el,color){ var p=""; for(var a=0;a<360;a+=45){ var cx=20+10*Math.cos(a*Math.PI/180); var cy=20+10*Math.sin(a*Math.PI/180); p+='<ellipse cx="'+cx.toFixed(2)+'" cy="'+cy.toFixed(2)+'" rx="5" ry="3" transform="rotate('+a+','+cx.toFixed(2)+','+cy.toFixed(2)+')" fill="'+color+'" opacity="0.85"/>'; } el.innerHTML=p+'<circle cx="20" cy="20" r="5" fill="#f5e070"/>'; }
+  edelweiss(document.getElementById("edel-l"),ACCENT);
+  edelweiss(document.getElementById("edel-r"),ACCENT);
+  var grid=document.getElementById("grid"), bannerSlot=document.getElementById("banner-slot"), card=document.getElementById("card");
+  function checkBingo(){ var g=[]; for(var r=0;r<5;r++){g[r]=[];for(var c=0;c<5;c++)g[r][c]=marked[r*5+c];} for(var r=0;r<5;r++){if(g[r].every(Boolean))return true;} for(var c=0;c<5;c++){var col=true;for(var r=0;r<5;r++)if(!g[r][c])col=false;if(col)return true;} var d1=true,d2=true; for(var i=0;i<5;i++){if(!g[i][i])d1=false;if(!g[i][4-i])d2=false;} return d1||d2; }
+  function render(){ grid.innerHTML=""; SQUARES.forEach(function(txt,i){ var isFree=(i===12); var cell=document.createElement("div"); cell.className="sq"+(isFree?" free":"")+(marked[i]?" marked":""); if(isFree){ var sv=document.createElementNS("http://www.w3.org/2000/svg","svg"); sv.setAttribute("viewBox","0 0 40 40"); sv.setAttribute("width","22"); sv.setAttribute("height","22"); edelweiss(sv,marked[i]?"#1c2b3a":ACCENT); cell.appendChild(sv); var lbl=document.createElement("span"); lbl.className="free-lbl"; lbl.textContent="FREE"; cell.appendChild(lbl); } else { var s=document.createElement("span"); s.textContent=txt; cell.appendChild(s); cell.addEventListener("click",function(){ marked[i]=!marked[i]; save(); render(); }); } grid.appendChild(cell); }); if(checkBingo()){ card.classList.add("bingo"); bannerSlot.innerHTML='<div class="banner">🏔️ Summit Nonsense! 🏔️</div>'; } else { card.classList.remove("bingo"); bannerSlot.innerHTML=""; } }
+  document.getElementById("resetBtn").addEventListener("click",function(){ marked=SQUARES.map(function(_,i){return i===12;}); save(); render(); });
+  render();
+</script>
+</body>
+</html>
