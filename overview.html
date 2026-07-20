@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#0a1825" />
+<title>Overzicht · Summit Nonsense Bingo</title>
+<style>
+  :root { --bg1:#060e14; --bg2:#0a1825; --bg3:#0d1f2e; --card1:#1c2b3a; --card2:#0f1e2a; --text:#c8dde8; --muted:#4a7a90; --sub:#6a9ab0; --lead:#aac4d0; --line:#2a4560; }
+  html[data-theme="light"] { --bg1:#eef4f8; --bg2:#dce8f0; --bg3:#cbdde9; --card1:#ffffff; --card2:#f5f9fc; --text:#2a3b47; --muted:#6a8494; --sub:#78929f; --lead:#4a6474; --line:#c3d4e0; }
+  * { box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+  html,body { margin:0; padding:0; background:linear-gradient(180deg,var(--bg1) 0%,var(--bg2) 50%,var(--bg3) 100%); background-attachment:fixed; font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif; min-height:100vh; color:var(--text); }
+  .wrap { padding:20px 14px 48px; max-width:520px; margin:0 auto; }
+  .head { text-align:center; margin-bottom:20px; }
+  .sub { font-size:11px; color:var(--sub); letter-spacing:4px; text-transform:uppercase; margin-bottom:8px; }
+  .title { font-size:22px; font-weight:bold; color:#e8c84a; letter-spacing:3px; text-transform:uppercase; text-shadow:0 0 30px rgba(232,200,74,.35); }
+  #gate { max-width:320px; margin:40px auto 0; text-align:center; }
+  #gate p { font-size:13px; color:var(--lead); margin-bottom:16px; }
+  #gate input { width:100%; padding:12px 14px; border-radius:12px; border:1px solid var(--muted); background:var(--card2); color:var(--text); font-size:16px; font-family:inherit; text-align:center; letter-spacing:2px; }
+  #gate button { margin-top:12px; width:100%; padding:12px; border-radius:12px; border:1px solid #e8c84a; background:transparent; color:#e8c84a; font-size:14px; font-family:inherit; cursor:pointer; letter-spacing:1px; }
+  #gate button:active { background:rgba(232,200,74,.12); }
+  #err { color:#f0806a; font-size:12px; margin-top:10px; min-height:16px; }
+  #content { display:none; }
+  .legend { display:flex; flex-wrap:wrap; gap:6px; justify-content:center; margin-bottom:18px; }
+  .cat { margin-bottom:22px; }
+  .cat-head { font-size:14px; font-weight:bold; letter-spacing:1px; padding:6px 0 8px; border-bottom:2px solid; margin-bottom:4px; display:flex; align-items:center; justify-content:space-between; }
+  .cat-count { font-size:11px; opacity:.7; font-weight:normal; }
+  .row { display:flex; align-items:center; justify-content:space-between; gap:10px; padding:9px 4px; border-bottom:1px solid var(--line); }
+  .opt { font-size:13px; flex:1; }
+  .cards { display:flex; flex-wrap:wrap; gap:4px; justify-content:flex-end; max-width:50%; }
+  .chip { font-size:10px; border:1px solid; border-radius:12px; padding:2px 8px; letter-spacing:.5px; white-space:nowrap; }
+  .none { font-size:11px; color:var(--muted); font-style:italic; }
+  .count { text-align:center; font-size:11px; color:var(--muted); margin:0 0 18px; letter-spacing:1px; }
+  .nav { text-align:center; margin-top:22px; display:flex; justify-content:center; gap:18px; }
+  .nav a { color:#e8c84a; font-size:12px; letter-spacing:1px; text-decoration:none; opacity:.8; }
+  .controls { display:flex; justify-content:center; margin-top:16px; }
+  .controls button { background:transparent; border:1px solid var(--muted); color:var(--sub); border-radius:20px; padding:8px 16px; font-size:12px; font-family:inherit; cursor:pointer; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="head">
+    <div class="sub">Schnaps and Schnitzels · Beheerder</div>
+    <div class="title">🔒 Overzicht</div>
+  </div>
+
+  <div id="gate">
+    <p>Voer het wachtwoord in om het overzicht van alle vakjes, categorieën en hun kaarten te zien.</p>
+    <input id="pw" type="password" placeholder="Wachtwoord" autocomplete="off" />
+    <button id="go">Ontgrendel</button>
+    <div id="err"></div>
+  </div>
+
+  <div id="content">
+    <div class="legend"><span class="chip" style="border-color:#d87aa0;color:#d87aa0">Charlotte</span><span class="chip" style="border-color:#7ac8e8;color:#7ac8e8">Ward</span><span class="chip" style="border-color:#f0a050;color:#f0a050">Freddie</span><span class="chip" style="border-color:#a07ae8;color:#a07ae8">Layla</span><span class="chip" style="border-color:#a8d87a;color:#a8d87a">Sara</span><span class="chip" style="border-color:#e8c84a;color:#e8c84a">Jorg</span></div>
+    <div class="count">46 vakjes · 6 categorieën</div>
+    <div class="cat">
+    <div class="cat-head" style="color:#7ac8e8;border-color:#7ac8e8">🥾 Onderweg & navigatie <span class="cat-count">9</span></div>
+    <div class="row"><div class="opt">Iemand klaagt over een nieuwe helling</div><div class="cards"><span class="chip" style="border-color:#a8d87a;color:#a8d87a">Sara</span><span class="chip" style="border-color:#e8c84a;color:#e8c84a">Jorg</span></div></div>
+<div class="row"><div class="opt">Kwartier kwijt door verkeerde afslag</div><div class="cards"><span class="chip" style="border-color:#f0a050;color:#f0a050">Freddie</span><span class="chip" style="border-color:#e8c84a;color:#e8c84a">Jorg</span></div></div>
+<div class="row"><div class="opt">Rugzak rolt van de berg</div><div class="cards"><span class="chip" style="border-color:#7ac8e8;color:#7ac8e8">Ward</span><span class="chip" style="border-color:#a07ae8;color:#a07ae8">Layla</span></div></div>
+<div class="row"><div class="opt">Lunch liggend in het gras</div><div class="cards"><span class="chip" style="border-color:#d87aa0;color:#d87aa0">Charlotte</span><span class="chip" style="border-color:#a8d87a;color:#a8d87a">Sara</span></div></div>
+<div class="row"><div class="opt">Water vullen uit een stroompje</div><div class="cards"><span class="chip" style="border-color:#a07ae8;color:#a07ae8">Layla</span><span class="chip" style="border-color:#e8c84a;color:#e8c84a">Jorg</span></div></div>
+<div class="row"><div class="opt">Jorg vindt een wandelstok</div><div class="cards"><span class="chip" style="border-color:#d87aa0;color:#d87aa0">Charlotte</span><span class="chip" style="border-color:#a8d87a;color:#a8d87a">Sara</span></div></div>
+<div class="row"><div class="opt">Bijna omvergereden door mountainbiker</div><div class="cards"><span class="chip" style="border-color:#7ac8e8;color:#7ac8e8">Ward</span><span class="chip" style="border-color:#f0a050;color:#f0a050">Freddie</span></div></div>
+<div class="row"><div class="opt">Iemand telt af naar de volgende bank</div><div class="cards"><span class="chip" style="border-color:#7ac8e8;color:#7ac8e8">Ward</span><span class="chip" style="border-color:#f0a050;color:#f0a050">Freddie</span></div></div>
+<div class="row"><div class="opt">Wandelkaart ondersteboven</div><div class="cards"><span class="chip" style="border-color:#d87aa0;color:#d87aa0">Charlotte</span><span class="chip" style="border-color:#a07ae8;color:#a07ae8">Layla</span></div></div>
+  </div>
+<div class="cat">
+    <div class="cat-head" style="color:#a8d87a;border-color:#a8d87a">🏔️ Berg, natuur & weer <span class="cat-count">5</span></div>
+    <div class="row"><div class="opt">Regen, app beloofde zon</div><div class="cards"><span class="chip" style="border-color:#d87aa0;color:#d87aa0">Charlotte</span><span class="chip" style="border-color:#f0a050;color:#f0a050">Freddie</span></div></div>
+<div class="row"><div class="opt">Foto gemaakt van een koe</div><div class="cards"><span class="chip" style="border-color:#7ac8e8;color:#7ac8e8">Ward</span><span class="chip" style="border-color:#a07ae8;color:#a07ae8">Layla</span><span class="chip" style="border-color:#e8c84a;color:#e8c84a">Jorg</span></div></div>
+<div class="row"><div class="opt">Top bereikt, nul uitzicht</div><div class="cards"><span class="chip" style="border-color:#a07ae8;color:#a07ae8">Layla</span><span class="chip" style="border-color:#a8d87a;color:#a8d87a">Sara</span></div></div>
+<div class="row"><div class="opt">Ward herkent een vogel</div><div class="cards"><span class="chip" style="border-color:#f0a050;color:#f0a050">Freddie</span><span class="chip" style="border-color:#a8d87a;color:#a8d87a">Sara</span><span class="chip" style="border-color:#e8c84a;color:#e8c84a">Jorg</span></div></div>
+<div class="row"><div class="opt">Kuhglocken gehoord vóór de koe gezien</div><div class="cards"><span class="chip" style="border-color:#d87aa0;color:#d87aa0">Charlotte</span><span class="chip" style="border-color:#7ac8e8;color:#7ac8e8">Ward</span></div></div>
+  </div>
+<div class="cat">
+    <div class="cat-head" style="color:#f0a050;border-color:#f0a050">🍺 Hut, eten & drinken <span class="cat-count">11</span></div>
+    <div class="row"><div class="opt">Iemands schoenen stinken</div><div class="cards"><span class="chip" style="border-color:#f0a050;color:#f0a050">Freddie</span><span class="chip" style="border-color:#a8d87a;color:#a8d87a">Sara</span></div></div>
+<div class="row"><div class="opt">Om 21:00 al in slaapzak</div><div class="cards"><span class="chip" style="border-color:#d87aa0;color:#d87aa0">Charlotte</span><span class="chip" style="border-color:#f0a050;color:#f0a050">Freddie</span></div></div>
+<div class="row"><div class="opt">'Zullen we shots doen?'</div><div class="cards"><span class="chip" style="border-color:#d87aa0;color:#d87aa0">Charlotte</span><span class="chip" style="border-color:#f0a050;color:#f0a050">Freddie</span></div></div>
+<div class="row"><div class="opt">Geen bereik én geen wifi</div><div class="cards"><span class="chip" style="border-color:#d87aa0;color:#d87aa0">Charlotte</span><span class="chip" style="border-color:#7ac8e8;color:#7ac8e8">Ward</span></div></div>
+<div class="row"><div class="opt">Warm water stopt halverwege</div><div class="cards"><span class="chip" style="border-color:#a07ae8;color:#a07ae8">Layla</span><span class="chip" style="border-color:#e8c84a;color:#e8c84a">Jorg</span></div></div>
+<div class="row"><div class="opt">'Ik heb zin in een aperitiefje'</div><div class="cards"><span class="chip" style="border-color:#7ac8e8;color:#7ac8e8">Ward</span><span class="chip" style="border-color:#a07ae8;color:#a07ae8">Layla</span><span class="chip" style="border-color:#e8c84a;color:#e8c84a">Jorg</span></div></div>
+<div class="row"><div class="opt">Snurker op de kamer</div><div class="cards"><span class="chip" style="border-color:#7ac8e8;color:#7ac8e8">Ward</span><span class="chip" style="border-color:#a07ae8;color:#a07ae8">Layla</span><span class="chip" style="border-color:#e8c84a;color:#e8c84a">Jorg</span></div></div>
+<div class="row"><div class="opt">Kaiserschmarrn besteld</div><div class="cards"><span class="chip" style="border-color:#f0a050;color:#f0a050">Freddie</span><span class="chip" style="border-color:#a8d87a;color:#a8d87a">Sara</span></div></div>
+<div class="row"><div class="opt">Slechte lunch</div><div class="cards"><span class="chip" style="border-color:#d87aa0;color:#d87aa0">Charlotte</span><span class="chip" style="border-color:#7ac8e8;color:#7ac8e8">Ward</span></div></div>
+<div class="row"><div class="opt">Handdoek nat moeten opbergen</div><div class="cards"><span class="chip" style="border-color:#a8d87a;color:#a8d87a">Sara</span><span class="chip" style="border-color:#e8c84a;color:#e8c84a">Jorg</span></div></div>
+<div class="row"><div class="opt">Iemand vist MNM's uit de trailmix</div><div class="cards"><span class="chip" style="border-color:#a07ae8;color:#a07ae8">Layla</span><span class="chip" style="border-color:#a8d87a;color:#a8d87a">Sara</span></div></div>
+  </div>
+<div class="cat">
+    <div class="cat-head" style="color:#a07ae8;border-color:#a07ae8">⌚ Horloges & Strava <span class="cat-count">4</span></div>
+    <div class="row"><div class="opt">Hoogtemeters hardop bijgehouden</div><div class="cards"><span class="chip" style="border-color:#f0a050;color:#f0a050">Freddie</span></div></div>
+<div class="row"><div class="opt">Freddie start Strava te laat</div><div class="cards"><span class="chip" style="border-color:#d87aa0;color:#d87aa0">Charlotte</span><span class="chip" style="border-color:#a07ae8;color:#a07ae8">Layla</span></div></div>
+<div class="row"><div class="opt">Horloges worden vergeleken</div><div class="cards"><span class="chip" style="border-color:#7ac8e8;color:#7ac8e8">Ward</span></div></div>
+<div class="row"><div class="opt">Extra lopen voor rond getal op horloge</div><div class="cards"><span class="chip" style="border-color:#a8d87a;color:#a8d87a">Sara</span><span class="chip" style="border-color:#e8c84a;color:#e8c84a">Jorg</span></div></div>
+  </div>
+<div class="cat">
+    <div class="cat-head" style="color:#d87aa0;border-color:#d87aa0">💬 Uitspraken & referenties <span class="cat-count">6</span></div>
+    <div class="row"><div class="opt">'Is het nog ver?'</div><div class="cards"><span class="chip" style="border-color:#7ac8e8;color:#7ac8e8">Ward</span><span class="chip" style="border-color:#e8c84a;color:#e8c84a">Jorg</span></div></div>
+<div class="row"><div class="opt">'Nog maar een half uurtje' (gelogen)</div><div class="cards"><span class="chip" style="border-color:#f0a050;color:#f0a050">Freddie</span><span class="chip" style="border-color:#a07ae8;color:#a07ae8">Layla</span></div></div>
+<div class="row"><div class="opt">'Deze helling valt wel mee' (viel niet mee)</div><div class="cards"><span class="chip" style="border-color:#d87aa0;color:#d87aa0">Charlotte</span><span class="chip" style="border-color:#a8d87a;color:#a8d87a">Sara</span></div></div>
+<div class="row"><div class="opt">Charlotte: 'Ik kan geen kaart lezen'</div><div class="cards"><span class="chip" style="border-color:#f0a050;color:#f0a050">Freddie</span><span class="chip" style="border-color:#a07ae8;color:#a07ae8">Layla</span></div></div>
+<div class="row"><div class="opt">Een Man Bijt Hond referentie</div><div class="cards"><span class="chip" style="border-color:#7ac8e8;color:#7ac8e8">Ward</span><span class="chip" style="border-color:#a8d87a;color:#a8d87a">Sara</span></div></div>
+<div class="row"><div class="opt">Freddie zegt iets over Hans Van Aken</div><div class="cards"><span class="chip" style="border-color:#d87aa0;color:#d87aa0">Charlotte</span><span class="chip" style="border-color:#e8c84a;color:#e8c84a">Jorg</span></div></div>
+  </div>
+<div class="cat">
+    <div class="cat-head" style="color:#e8c84a;border-color:#e8c84a">🧑 Groep, gewoontes & kwaaltjes <span class="cat-count">11</span></div>
+    <div class="row"><div class="opt">Blaar geprikt bij het eten</div><div class="cards"><span class="chip" style="border-color:#7ac8e8;color:#7ac8e8">Ward</span><span class="chip" style="border-color:#e8c84a;color:#e8c84a">Jorg</span></div></div>
+<div class="row"><div class="opt">Tandenborstel vergeten</div><div class="cards"><span class="chip" style="border-color:#7ac8e8;color:#7ac8e8">Ward</span><span class="chip" style="border-color:#f0a050;color:#f0a050">Freddie</span><span class="chip" style="border-color:#e8c84a;color:#e8c84a">Jorg</span></div></div>
+<div class="row"><div class="opt">Foto van huisdier getoond</div><div class="cards"><span class="chip" style="border-color:#f0a050;color:#f0a050">Freddie</span><span class="chip" style="border-color:#a07ae8;color:#a07ae8">Layla</span></div></div>
+<div class="row"><div class="opt">Hollanders op 200m herkend</div><div class="cards"><span class="chip" style="border-color:#f0a050;color:#f0a050">Freddie</span><span class="chip" style="border-color:#a07ae8;color:#a07ae8">Layla</span><span class="chip" style="border-color:#a8d87a;color:#a8d87a">Sara</span></div></div>
+<div class="row"><div class="opt">Layla zucht hard</div><div class="cards"><span class="chip" style="border-color:#a8d87a;color:#a8d87a">Sara</span><span class="chip" style="border-color:#e8c84a;color:#e8c84a">Jorg</span></div></div>
+<div class="row"><div class="opt">Kleine teen doet pijn</div><div class="cards"><span class="chip" style="border-color:#d87aa0;color:#d87aa0">Charlotte</span><span class="chip" style="border-color:#a8d87a;color:#a8d87a">Sara</span></div></div>
+<div class="row"><div class="opt">Iemand ergert zich aan Wards stokken</div><div class="cards"><span class="chip" style="border-color:#d87aa0;color:#d87aa0">Charlotte</span><span class="chip" style="border-color:#f0a050;color:#f0a050">Freddie</span></div></div>
+<div class="row"><div class="opt">Zonnebrand vergeten — iemand verbrandt</div><div class="cards"><span class="chip" style="border-color:#d87aa0;color:#d87aa0">Charlotte</span><span class="chip" style="border-color:#a8d87a;color:#a8d87a">Sara</span></div></div>
+<div class="row"><div class="opt">Sara doet een dutje</div><div class="cards"><span class="chip" style="border-color:#d87aa0;color:#d87aa0">Charlotte</span><span class="chip" style="border-color:#a07ae8;color:#a07ae8">Layla</span></div></div>
+<div class="row"><div class="opt">Iemand heeft iets nutteloos mee</div><div class="cards"><span class="chip" style="border-color:#7ac8e8;color:#7ac8e8">Ward</span><span class="chip" style="border-color:#e8c84a;color:#e8c84a">Jorg</span></div></div>
+<div class="row"><div class="opt">Iemand vergelijkt de locatie met Thuis</div><div class="cards"><span class="chip" style="border-color:#7ac8e8;color:#7ac8e8">Ward</span><span class="chip" style="border-color:#a07ae8;color:#a07ae8">Layla</span></div></div>
+  </div>
+    <div class="nav"><a href="index.html">← Terug naar start</a></div>
+    <div class="controls"><button id="themeBtn">☀️ Licht</button></div>
+  </div>
+</div>
+<script>
+  var THEME_KEY="summit-bingo-theme", themeBtn=document.getElementById("themeBtn");
+  function applyTheme(t){ document.documentElement.setAttribute("data-theme",t); if(themeBtn) themeBtn.textContent=(t==="light"?"🌙 Donker":"☀️ Licht"); try{localStorage.setItem(THEME_KEY,t);}catch(e){} }
+  var _ct="dark"; try{ _ct=localStorage.getItem(THEME_KEY)||"dark"; }catch(e){}
+  applyTheme(_ct);
+  if(themeBtn) themeBtn.addEventListener("click",function(){ applyTheme(document.documentElement.getAttribute("data-theme")==="light"?"dark":"light"); });
+  var PW="Pet";
+  var gate=document.getElementById("gate"), content=document.getElementById("content"), err=document.getElementById("err"), pw=document.getElementById("pw");
+  function tryUnlock(){ if(pw.value===PW){ gate.style.display="none"; content.style.display="block"; } else { err.textContent="Onjuist wachtwoord."; pw.value=""; } }
+  document.getElementById("go").addEventListener("click",tryUnlock);
+  pw.addEventListener("keydown",function(e){ if(e.key==="Enter") tryUnlock(); });
+</script>
+</body>
+</html>

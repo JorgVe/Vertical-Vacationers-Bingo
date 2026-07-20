@@ -4,95 +4,73 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 <meta name="theme-color" content="#0a1825" />
-<title>Summit Nonsense Bingo · Freddie</title>
+<title>Schnaps and Schnitzels Bingo · Freddie</title>
 <style>
-  :root {
-    --bg1:#060e14; --bg2:#0a1825; --bg3:#0d1f2e;
-    --card1:#1c2b3a; --card2:#0f1e2a; --card3:#0a1520;
-    --peak1:#0a1a2a; --peak2:#1c2b3a;
-    --text:#c8dde8; --sq1:#1e3347; --sq2:#162840; --sqBorder:#2a4560;
-    --muted:#4a7a90; --headSub:#aac4d0; --appSub:#6a9ab0;
-  }
-  html[data-theme="light"] {
-    --bg1:#eef4f8; --bg2:#dce8f0; --bg3:#cbdde9;
-    --card1:#ffffff; --card2:#f5f9fc; --card3:#eef4f8;
-    --peak1:#dce8f0; --peak2:#ffffff;
-    --text:#2a3b47; --sq1:#f2f7fa; --sq2:#e7eff5; --sqBorder:#c3d4e0;
-    --muted:#6a8494; --headSub:#5a7484; --appSub:#78929f;
-  }
+  :root { --bg1:#060e14; --bg2:#0a1825; --bg3:#0d1f2e; --card1:#1c2b3a; --card2:#0f1e2a; --card3:#0a1520; --peak1:#0a1a2a; --peak2:#1c2b3a; --text:#c8dde8; --sq1:#1e3347; --sq2:#162840; --sqBorder:#2a4560; --muted:#4a7a90; --headSub:#aac4d0; --appSub:#6a9ab0; }
+  html[data-theme="light"] { --bg1:#eef4f8; --bg2:#dce8f0; --bg3:#cbdde9; --card1:#ffffff; --card2:#f5f9fc; --card3:#eef4f8; --peak1:#dce8f0; --peak2:#ffffff; --text:#2a3b47; --sq1:#f2f7fa; --sq2:#e7eff5; --sqBorder:#c3d4e0; --muted:#6a8494; --headSub:#5a7484; --appSub:#78929f; }
   * { box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
   html,body { margin:0; padding:0; background:linear-gradient(180deg,var(--bg1) 0%,var(--bg2) 50%,var(--bg3) 100%); background-attachment:fixed; font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif; min-height:100vh; color:var(--text); }
-  .wrap { padding:16px 12px 40px; max-width:460px; margin:0 auto; }
-  .controls { display:flex; justify-content:flex-end; gap:8px; margin-bottom:12px; }
-  .controls button { background:transparent; border:1px solid var(--muted); color:var(--appSub); border-radius:20px; padding:6px 14px; font-size:12px; font-family:inherit; cursor:pointer; letter-spacing:.5px; }
-  .controls button:active { background:rgba(128,128,128,.15); }
+  .wrap { padding:20px 12px 40px; max-width:440px; margin:0 auto; }
   .app-head { text-align:center; margin-bottom:18px; }
   .app-sub { font-size:11px; color:var(--appSub); letter-spacing:4px; text-transform:uppercase; margin-bottom:6px; }
-  .app-title { font-size:24px; font-weight:bold; color:#f0a050; letter-spacing:3px; text-transform:uppercase; text-shadow:0 0 30px #f0a05059; }
-  .app-tag { font-size:10px; color:var(--muted); letter-spacing:2px; margin-top:4px; }
+  .app-title { font-size:22px; font-weight:bold; color:#f0a050; letter-spacing:2px; text-transform:uppercase; text-shadow:0 0 30px #f0a05059; }
   .card { background:linear-gradient(160deg,var(--card1) 0%,var(--card2) 60%,var(--card3) 100%); border:2px solid #f0a050; border-radius:20px; overflow:hidden; box-shadow:0 8px 40px rgba(0,0,0,.6); transition:box-shadow .5s; }
   html[data-theme="light"] .card { box-shadow:0 8px 30px rgba(80,110,130,.25); }
   .card.bingo { box-shadow:0 0 40px #f0a050,0 8px 40px rgba(0,0,0,.7); }
   .peak { position:relative; background:linear-gradient(180deg,var(--peak1) 0%,var(--peak2) 100%); line-height:0; }
   .peak svg { width:100%; height:40px; display:block; }
-  .head { padding:10px 16px 8px; text-align:center; border-bottom:1px solid #f0a05022; }
+  .head { padding:12px 16px 10px; text-align:center; border-bottom:1px solid #f0a05022; }
   .head-title { display:flex; align-items:center; justify-content:center; gap:8px; margin-bottom:2px; }
-  .head-title span { font-size:19px; font-weight:bold; color:#f0a050; letter-spacing:3px; text-transform:uppercase; text-shadow:0 0 20px #f0a05080; }
+  .head-title span { font-size:19px; font-weight:bold; color:#f0a050; letter-spacing:4px; text-transform:uppercase; text-shadow:0 0 20px #f0a05080; }
   .head-sub { font-size:10px; color:var(--headSub); letter-spacing:3px; text-transform:uppercase; margin-bottom:6px; }
   .name-badge { display:inline-block; background:#f0a05022; border:1px solid #f0a05059; border-radius:20px; padding:3px 20px; font-size:16px; font-weight:bold; color:#f0a050; letter-spacing:3px; text-transform:uppercase; }
-  .bingo-row { display:grid; grid-template-columns:repeat(5,1fr); gap:3px; padding:8px 12px 4px; }
-  .bingo-row div { text-align:center; font-weight:bold; font-size:15px; color:#f0a050; letter-spacing:2px; text-shadow:0 0 8px #f0a05066; }
-  .grid { display:grid; grid-template-columns:repeat(5,1fr); gap:3px; padding:0 12px 12px; }
-  .sq { background:linear-gradient(135deg,var(--sq1),var(--sq2)); border:1px solid var(--sqBorder); border-radius:8px; min-height:58px; display:flex; align-items:center; justify-content:center; padding:5px 3px; cursor:pointer; transition:all .15s; position:relative; }
-  .sq span { font-size:8.5px; text-align:center; white-space:pre-line; line-height:1.35; color:var(--text); user-select:none; }
+  .grid { display:grid; grid-template-columns:repeat(4,1fr); gap:5px; padding:12px; }
+  .sq { background:linear-gradient(135deg,var(--sq1),var(--sq2)); border:1px solid var(--sqBorder); border-radius:10px; min-height:82px; display:flex; align-items:center; justify-content:center; padding:8px 5px; cursor:pointer; transition:all .15s; position:relative; }
+  .sq span.txt { font-size:11px; text-align:center; white-space:pre-line; line-height:1.3; color:var(--text); user-select:none; }
   .sq.marked { background:linear-gradient(135deg,#f0a050,#f0a050bb); border-color:#f0a050; box-shadow:0 2px 10px #f0a05044; }
-  .sq.marked span { color:#0f1e2a; font-weight:bold; }
-  .sq.free { cursor:default; }
-  .sq .free-lbl { position:absolute; bottom:3px; font-size:7px; color:#f0a050; letter-spacing:1px; opacity:.8; }
-  .sq.free.marked .free-lbl { color:#1c2b3a; }
+  .sq.marked span.txt { color:#0f1e2a; font-weight:bold; }
+  .cat-dot { position:absolute; top:6px; left:6px; width:9px; height:9px; border-radius:50%; box-shadow:0 0 0 1px rgba(0,0,0,.25); }
+  .sq.marked .cat-dot { box-shadow:0 0 0 1px rgba(255,255,255,.7); }
   .banner { margin:0 12px 12px; background:linear-gradient(90deg,#f0a050,#f0a050bb,#f0a050); color:#0f1e2a; border-radius:10px; padding:10px 0; text-align:center; font-weight:bold; font-size:19px; letter-spacing:4px; text-transform:uppercase; animation:pulse .7s infinite alternate; }
   @keyframes pulse { from{opacity:1;transform:scale(1);} to{opacity:.85;transform:scale(1.01);} }
+  .catcount { display:flex; flex-wrap:wrap; gap:6px; justify-content:center; padding:2px 12px 14px; }
+  .catcount .pill { display:flex; align-items:center; gap:5px; font-size:11px; border:1px solid var(--sqBorder); border-radius:14px; padding:3px 10px; color:var(--text); }
+  .catcount .pill .cdot { width:8px; height:8px; border-radius:50%; }
+  .catcount .pill b { font-weight:bold; }
   .bottom-peak { transform:scaleY(-1); opacity:.1; line-height:0; }
   .bottom-peak svg { width:100%; height:40px; display:block; }
   .foot { text-align:center; margin-top:14px; color:var(--muted); font-size:10px; letter-spacing:1px; }
-  .reset { margin-top:12px; text-align:center; }
-  .reset button { background:transparent; border:1px solid var(--muted); color:var(--appSub); border-radius:20px; padding:6px 18px; font-size:11px; letter-spacing:1px; font-family:inherit; cursor:pointer; }
-  .reset button:active { background:rgba(128,128,128,.15); }
-  .nav { text-align:center; margin-top:16px; }
+  .controls { display:flex; justify-content:center; gap:10px; margin-top:16px; }
+  .controls button { background:transparent; border:1px solid var(--muted); color:var(--appSub); border-radius:20px; padding:8px 18px; font-size:12px; font-family:inherit; cursor:pointer; letter-spacing:.5px; }
+  .controls button:active { background:rgba(128,128,128,.15); }
+  .nav { text-align:center; margin-top:16px; display:flex; justify-content:center; gap:18px; }
   .nav a { color:#f0a050; font-size:11px; letter-spacing:1px; text-decoration:none; opacity:.7; }
-
   @media print {
     @page { margin:12mm; }
     html, body { background:#fff !important; color:#111 !important; }
-    .controls, .foot, .reset, .nav { display:none !important; }
+    .controls, .foot, .nav, .catcount { display:none !important; }
     .app-title { color:#111 !important; text-shadow:none !important; }
-    .app-sub, .app-tag { color:#555 !important; }
+    .app-sub { color:#555 !important; }
     .card { box-shadow:none !important; border:2px solid #333 !important; background:#fff !important; }
     .peak, .bottom-peak { display:none !important; }
     .head { border-bottom:1px solid #ccc !important; padding-top:14px; }
     .head-title span { color:#111 !important; text-shadow:none !important; }
     .head-sub { color:#555 !important; }
     .name-badge { color:#111 !important; background:#fff !important; border:1px solid #333 !important; }
-    .bingo-row div { color:#111 !important; text-shadow:none !important; }
     .sq { background:#fff !important; border:1px solid #999 !important; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
-    .sq span { color:#111 !important; font-size:9px; }
+    .sq span.txt { color:#111 !important; font-size:11px; }
     .sq.marked { background:#ddd !important; }
-    .sq.marked span { color:#000 !important; }
-    .sq .free-lbl, .sq.free.marked .free-lbl { color:#333 !important; }
+    .sq.marked span.txt { color:#000 !important; }
+    .cat-dot { -webkit-print-color-adjust:exact; print-color-adjust:exact; box-shadow:0 0 0 1px #333 !important; }
     .banner { display:none !important; }
   }
 </style>
 </head>
 <body>
 <div class="wrap">
-  <div class="controls">
-    <button id="themeBtn" aria-label="Wissel thema">☀️ Licht</button>
-    <button id="printBtn" aria-label="Print kaart">🖨️ Print</button>
-  </div>
   <div class="app-head">
-    <div class="app-sub">The Vertical Vacationers · Austria</div>
-    <div class="app-title">⛰️ Summit Nonsense Bingo</div>
-    <div class="app-tag">4 dagen · 3 koppels · oneindige nonsens</div>
+    <div class="app-sub">Schnaps and Schnitzels · Austria</div>
+    <div class="app-title">⛰️ Schnaps and Schnitzels Bingo</div>
   </div>
   <div class="card" id="card">
     <div class="peak">
@@ -106,48 +84,51 @@
     <div class="head">
       <div class="head-title">
         <svg width="16" height="16" viewBox="0 0 40 40" id="edel-l"></svg>
-        <span>Summit Nonsense</span>
+        <span>Bingo</span>
         <svg width="16" height="16" viewBox="0 0 40 40" id="edel-r"></svg>
       </div>
-      <div class="head-sub">Bingo · Austria · The Vertical Vacationers</div>
+      <div class="head-sub">Schnaps and Schnitzels · Austria</div>
       <div class="name-badge">Freddie</div>
     </div>
-    <div class="bingo-row"><div>B</div><div>I</div><div>N</div><div>G</div><div>O</div></div>
     <div class="grid" id="grid"></div>
+    <div class="catcount" id="catcount"></div>
     <div id="banner-slot"></div>
     <div class="bottom-peak">
       <svg viewBox="0 0 200 60" preserveAspectRatio="none"><polygon points="0,60 40,10 80,40 110,5 150,35 180,15 200,60" fill="#f0a050"/></svg>
     </div>
   </div>
-  <div class="foot">Tik een vakje aan om het te markeren · Midden is altijd vrij</div>
-  <div class="reset"><button id="resetBtn">Kaart leegmaken</button></div>
-  <div class="nav"><a href="index.html">← Alle kaarten</a></div>
+  <div class="foot">Tik een vakje aan om het te markeren · Stip = categorie · 4 op een rij wint</div>
+  <div class="controls">
+    <button id="themeBtn" aria-label="Wissel thema">☀️ Licht</button>
+    <button id="printBtn" aria-label="Print kaart">🖨️ Print</button>
+  </div>
+  <div class="nav"><a href="index.html">← Alle kaarten</a><a href="rules.html">📜 Spelregels</a></div>
 </div>
 <script>
-  var SQUARES = ["Kaiserschmarrn\nbesteld","Sara doet\neen dutje","Iemand klaagt over\neen nieuwe helling","Ward herkent\neen vogel","Iemand telt af naar\nde volgende bank","Water vullen uit\neen stroompje","Hoogtemeters hardop\nbijgehouden","Geen bereik\nén geen wifi","Warm water stopt\nhalverwege","Snurker op\nde kamer","Blaar geprikt\nbij het eten","'Deze helling valt wel\nmee' (viel niet mee)","FREE","Kleine teen\ndoet pijn","Handdoek nat\nmoeten opbergen","Slechte\nlunch","Lunch liggend\nin het gras","Extra lopen voor rond\ngetal op horloge","Zonnebrand vergeten —\niemand verbrandt","Om 21:00 al\nin slaapzak","Hollanders op\n200m herkend","Regen, app\nbeloofde zon","Kuhglocken gehoord\nvóór de koe gezien","Iemand heeft iets\nnutteloos mee","Tandenborstel\nvergeten"];
+  var SQUARES = ["Regen, app\nbeloofde zon","Om 21:00 al\nin slaapzak","Iemand telt af naar\nde volgende bank","Iemands schoenen\nstinken","Kaiserschmarrn\nbesteld","Kwartier kwijt door\nverkeerde afslag","Hollanders op\n200m herkend","Bijna omvergereden\ndoor mountainbiker","Tandenborstel\nvergeten","'Nog maar een half\nuurtje' (gelogen)","'Zullen we\nshots doen?'","Charlotte: 'Ik kan\ngeen kaart lezen'","Iemand ergert zich\naan Wards stokken","Foto van\nhuisdier getoond","Ward herkent\neen vogel","Hoogtemeters hardop\nbijgehouden"];
   var ACCENT = "#f0a050";
-  var STORAGE_KEY = "summit-bingo-freddie";
-  var THEME_KEY = "summit-bingo-theme";
+  var STORAGE_KEY = "ssbingo-freddie";
+  var CATMAP = {"Iemand klaagt over\neen nieuwe helling":"onderweg","Kwartier kwijt door\nverkeerde afslag":"onderweg","Rugzak rolt\nvan de berg":"onderweg","Lunch liggend\nin het gras":"onderweg","Water vullen uit\neen stroompje":"onderweg","Jorg vindt\neen wandelstok":"onderweg","Bijna omvergereden\ndoor mountainbiker":"onderweg","Iemand telt af naar\nde volgende bank":"onderweg","Wandelkaart\nondersteboven":"onderweg","Regen, app\nbeloofde zon":"natuur","Foto gemaakt\nvan een koe":"natuur","Top bereikt,\nnul uitzicht":"natuur","Ward herkent\neen vogel":"natuur","Kuhglocken gehoord\nvóór de koe gezien":"natuur","Iemands schoenen\nstinken":"hut","Om 21:00 al\nin slaapzak":"hut","'Zullen we\nshots doen?'":"hut","Geen bereik\nén geen wifi":"hut","Warm water stopt\nhalverwege":"hut","'Ik heb zin in\neen aperitiefje'":"hut","Snurker op\nde kamer":"hut","Kaiserschmarrn\nbesteld":"hut","Slechte\nlunch":"hut","Handdoek nat\nmoeten opbergen":"hut","Iemand vist MNM's\nuit de trailmix":"hut","Hoogtemeters hardop\nbijgehouden":"horloge","Freddie start\nStrava te laat":"horloge","Horloges worden\nvergeleken":"horloge","Extra lopen voor rond\ngetal op horloge":"horloge","'Is het\nnog ver?'":"uitspraak","'Nog maar een half\nuurtje' (gelogen)":"uitspraak","'Deze helling valt wel\nmee' (viel niet mee)":"uitspraak","Charlotte: 'Ik kan\ngeen kaart lezen'":"uitspraak","Een Man Bijt Hond\nreferentie":"uitspraak","Freddie zegt iets\nover Hans Van Aken":"uitspraak","Blaar geprikt\nbij het eten":"groep","Tandenborstel\nvergeten":"groep","Foto van\nhuisdier getoond":"groep","Hollanders op\n200m herkend":"groep","Layla zucht\nhard":"groep","Kleine teen\ndoet pijn":"groep","Iemand ergert zich\naan Wards stokken":"groep","Zonnebrand vergeten —\niemand verbrandt":"groep","Sara doet\neen dutje":"groep","Iemand heeft iets\nnutteloos mee":"groep","Iemand vergelijkt de\nlocatie met Thuis":"groep"};
+  var CATMETA = {"onderweg":{"label":"Onderweg","emoji":"🥾","color":"#7ac8e8"},"natuur":{"label":"Natuur","emoji":"🏔️","color":"#a8d87a"},"hut":{"label":"Hut & eten","emoji":"🍺","color":"#f0a050"},"horloge":{"label":"Horloges","emoji":"⌚","color":"#a07ae8"},"uitspraak":{"label":"Uitspraken","emoji":"💬","color":"#d87aa0"},"groep":{"label":"Groep","emoji":"🧑","color":"#e8c84a"}};
+  var CATORDER = ["onderweg","natuur","hut","horloge","uitspraak","groep"];
 
-  // ---- theme ----
-  var themeBtn = document.getElementById("themeBtn");
-  function applyTheme(t){ document.documentElement.setAttribute("data-theme", t); themeBtn.textContent = (t==="light" ? "🌙 Donker" : "☀️ Licht"); try{ localStorage.setItem(THEME_KEY, t); }catch(e){} }
-  var curTheme = "dark"; try { curTheme = localStorage.getItem(THEME_KEY) || "dark"; } catch(e){}
-  applyTheme(curTheme);
-  themeBtn.addEventListener("click", function(){ applyTheme(document.documentElement.getAttribute("data-theme")==="light" ? "dark" : "light"); });
+  var THEME_KEY="summit-bingo-theme", themeBtn=document.getElementById("themeBtn");
+  function applyTheme(t){ document.documentElement.setAttribute("data-theme",t); if(themeBtn) themeBtn.textContent=(t==="light"?"🌙 Donker":"☀️ Licht"); try{localStorage.setItem(THEME_KEY,t);}catch(e){} }
+  var _ct="dark"; try{ _ct=localStorage.getItem(THEME_KEY)||"dark"; }catch(e){}
+  applyTheme(_ct);
+  if(themeBtn) themeBtn.addEventListener("click",function(){ applyTheme(document.documentElement.getAttribute("data-theme")==="light"?"dark":"light"); });
   document.getElementById("printBtn").addEventListener("click", function(){ window.print(); });
-
-  // ---- bingo ----
-  var marked = SQUARES.map(function(_,i){ return i===12; });
-  try { var saved = localStorage.getItem(STORAGE_KEY); if(saved){ var arr=JSON.parse(saved); if(Array.isArray(arr)&&arr.length===25){ marked=arr; marked[12]=true; } } } catch(e){}
+  var marked = SQUARES.map(function(){ return false; });
+  try { var saved = localStorage.getItem(STORAGE_KEY); if(saved){ var arr=JSON.parse(saved); if(Array.isArray(arr)&&arr.length===16){ marked=arr; } } } catch(e){}
   function save(){ try{ localStorage.setItem(STORAGE_KEY,JSON.stringify(marked)); }catch(e){} }
   function edelweiss(el,color){ var p=""; for(var a=0;a<360;a+=45){ var cx=20+10*Math.cos(a*Math.PI/180); var cy=20+10*Math.sin(a*Math.PI/180); p+='<ellipse cx="'+cx.toFixed(2)+'" cy="'+cy.toFixed(2)+'" rx="5" ry="3" transform="rotate('+a+','+cx.toFixed(2)+','+cy.toFixed(2)+')" fill="'+color+'" opacity="0.85"/>'; } el.innerHTML=p+'<circle cx="20" cy="20" r="5" fill="#f5e070"/>'; }
   edelweiss(document.getElementById("edel-l"),ACCENT);
   edelweiss(document.getElementById("edel-r"),ACCENT);
-  var grid=document.getElementById("grid"), bannerSlot=document.getElementById("banner-slot"), card=document.getElementById("card");
-  function checkBingo(){ var g=[]; for(var r=0;r<5;r++){g[r]=[];for(var c=0;c<5;c++)g[r][c]=marked[r*5+c];} for(var r=0;r<5;r++){if(g[r].every(Boolean))return true;} for(var c=0;c<5;c++){var col=true;for(var r=0;r<5;r++)if(!g[r][c])col=false;if(col)return true;} var d1=true,d2=true; for(var i=0;i<5;i++){if(!g[i][i])d1=false;if(!g[i][4-i])d2=false;} return d1||d2; }
-  function render(){ grid.innerHTML=""; SQUARES.forEach(function(txt,i){ var isFree=(i===12); var cell=document.createElement("div"); cell.className="sq"+(isFree?" free":"")+(marked[i]?" marked":""); if(isFree){ var sv=document.createElementNS("http://www.w3.org/2000/svg","svg"); sv.setAttribute("viewBox","0 0 40 40"); sv.setAttribute("width","22"); sv.setAttribute("height","22"); edelweiss(sv,marked[i]?"#1c2b3a":ACCENT); cell.appendChild(sv); var lbl=document.createElement("span"); lbl.className="free-lbl"; lbl.textContent="FREE"; cell.appendChild(lbl); } else { var s=document.createElement("span"); s.textContent=txt; cell.appendChild(s); cell.addEventListener("click",function(){ marked[i]=!marked[i]; save(); render(); }); } grid.appendChild(cell); }); if(checkBingo()){ card.classList.add("bingo"); bannerSlot.innerHTML='<div class="banner">🏔️ Summit Nonsense! 🏔️</div>'; } else { card.classList.remove("bingo"); bannerSlot.innerHTML=""; } }
-  document.getElementById("resetBtn").addEventListener("click",function(){ marked=SQUARES.map(function(_,i){return i===12;}); save(); render(); });
+  var grid=document.getElementById("grid"), bannerSlot=document.getElementById("banner-slot"), card=document.getElementById("card"), catcount=document.getElementById("catcount");
+  function checkBingo(){ var g=[]; for(var r=0;r<4;r++){g[r]=[];for(var c=0;c<4;c++)g[r][c]=marked[r*4+c];} for(var r=0;r<4;r++){if(g[r].every(Boolean))return true;} for(var c=0;c<4;c++){var col=true;for(var r=0;r<4;r++)if(!g[r][c])col=false;if(col)return true;} var d1=true,d2=true; for(var i=0;i<4;i++){if(!g[i][i])d1=false;if(!g[i][3-i])d2=false;} return d1||d2; }
+  function renderCounts(){ var counts={}; CATORDER.forEach(function(k){counts[k]=0;}); SQUARES.forEach(function(txt){ var k=CATMAP[txt]; if(k) counts[k]=(counts[k]||0)+1; }); catcount.innerHTML = CATORDER.map(function(k){ var m=CATMETA[k]; return '<span class="pill"><span class="cdot" style="background:'+m.color+'"></span>'+m.emoji+' <b>'+counts[k]+'</b></span>'; }).join(""); }
+  function render(){ grid.innerHTML=""; SQUARES.forEach(function(txt,i){ var cell=document.createElement("div"); cell.className="sq"+(marked[i]?" marked":""); var k=CATMAP[txt]; if(k){ var dot=document.createElement("span"); dot.className="cat-dot"; dot.style.background=CATMETA[k].color; dot.title=CATMETA[k].label; cell.appendChild(dot); } var s=document.createElement("span"); s.className="txt"; s.textContent=txt; cell.appendChild(s); cell.addEventListener("click",function(){ marked[i]=!marked[i]; save(); render(); }); grid.appendChild(cell); }); if(checkBingo()){ card.classList.add("bingo"); bannerSlot.innerHTML='<div class="banner">🏔️ BINGO! 🏔️</div>'; } else { card.classList.remove("bingo"); bannerSlot.innerHTML=""; } }
+  renderCounts();
   render();
 </script>
 </body>
