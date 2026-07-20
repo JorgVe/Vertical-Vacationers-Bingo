@@ -1,1 +1,1 @@
-# Vertical-Vacationers-Bingo
+Schnapps-and-Schnitzels-Bingo
